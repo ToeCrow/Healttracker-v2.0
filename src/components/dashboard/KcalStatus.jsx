@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectTDEE } from '@/reducers/profileSlice';
+import { selectTDEE } from '@/Redux/reducers/profileSlice';
 
 const KcalStatus = () => {
   const tdee = useSelector(selectTDEE);

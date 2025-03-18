@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addWeight } from '../reducers/profileSlice'
+import { addWeight } from '../Redux/reducers/profileSlice'
 import { Button } from './ui/button'
 
 const AddWeight = ({onSubmit}) => {

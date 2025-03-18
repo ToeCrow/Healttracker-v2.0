@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MealList from '../components/MealList';
 import { useSelector, useDispatch } from "react-redux";
-import { addMeal, updateMeal } from "../reducers/mealSlice";
+import { addMeal, updateMeal } from "../Redux/reducers/mealSlice";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from '@/components/ui/button';
 

@@ -11,7 +11,7 @@ import {
   setTDEE,
   setBirthDate,
   addWeight,
-} from "../reducers/profileSlice";
+} from "../Redux/reducers/profileSlice";
 import { useNavigate } from "react-router-dom";
 
 const ProfileForm = () => {
