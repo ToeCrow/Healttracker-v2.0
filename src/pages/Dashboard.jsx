@@ -3,12 +3,12 @@ import CurrentWeight from '../components/dashboard/CurrentWeight';
 import AddWeight from '../components/AddWeight';
 import TodaysMeals from '../components/dashboard/TodaysMeals';
 import KcalStatus from '../components/dashboard/KcalStatus';
-import WelcomeProfile from '@/components/dashboard/WelcomeProfile';
+import ProfileCard from './ProfileCard';
 import MakroCalc from '../components/dashboard/MakroCalc';
 
 const Dashboard = () => {
   const [showAddWeight, setShowAddWeight] = useState(false);
-  const energyData = [50, 30, 20]; // Exempeldata: 50% kolhydrater, 30% fett, 20% protein
+ 
 
   return (
     <main className='flex justify-center items-start'>
@@ -16,8 +16,8 @@ const Dashboard = () => {
 
         {/* Left Column: Stacked vertically */}
         <div className="flex flex-col gap-4">
-          <WelcomeProfile />
-          <KcalStatus />
+          <ProfileCard />
+          
           {showAddWeight ? (
             <AddWeight onSubmit={() => setShowAddWeight(false)} />
           ) : (
@@ -33,6 +33,7 @@ const Dashboard = () => {
 
         {/* Right Column (on larger screens), but moves under on smaller screens */}
         <div className="md:col-span-1">
+          <KcalStatus />
           <TodaysMeals />
         </div>
       </div>

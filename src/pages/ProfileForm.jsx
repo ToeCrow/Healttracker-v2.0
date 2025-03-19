@@ -95,8 +95,8 @@ const ProfileForm = () => {
       dispatch(addWeight({ weight: newWeightValue, date }));
     }
 
-    // Navigera tillbaka till ProfileCard
-    navigate("/profilecard");
+    // Navigera tillbaka till dashboard
+    navigate("/");
   };
 
   const handleBirthDateChange = (e) => {

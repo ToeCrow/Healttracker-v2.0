@@ -6,7 +6,7 @@ import Dashboard from "./pages/Dashboard";
 // Ladda komponenter asynkront
 const MealLog = lazy(() => import("./pages/MealLog"));
 const ProfileForm = lazy(() => import("./pages/ProfileForm"));
-const ProfileCard = lazy(() => import("./pages/ProfileCard"));
+// const ProfileCard = lazy(() => import("./pages/ProfileCard"));
 
 const router = createBrowserRouter([
   {
@@ -31,14 +31,14 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
-      {
-        path: "profilecard",
-        element: (
-          <Suspense fallback={<div className="p-4 text-2xl text-accent h-screen">Loading...</div>}>
-            <ProfileCard />
-          </Suspense>
-        ),
-      },
+      // {
+      //   path: "profilecard",
+      //   element: (
+      //     <Suspense fallback={<div className="p-4 text-2xl text-accent h-screen">Loading...</div>}>
+      //       <ProfileCard />
+      //     </Suspense>
+      //   ),
+      // },
     ],
   },
 ]);
