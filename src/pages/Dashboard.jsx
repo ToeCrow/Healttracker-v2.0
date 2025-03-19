@@ -4,8 +4,7 @@ import AddWeight from '../components/AddWeight';
 import TodaysMeals from '../components/dashboard/TodaysMeals';
 import KcalStatus from '../components/dashboard/KcalStatus';
 import WelcomeProfile from '@/components/dashboard/WelcomeProfile';
-import { Navigate } from 'react-router';
-import EnergyPieChart from '../components/EnergyPieChart';
+import MakroCalc from '../components/dashboard/MakroCalc';
 
 const Dashboard = () => {
   const [showAddWeight, setShowAddWeight] = useState(false);
@@ -28,7 +27,7 @@ const Dashboard = () => {
           )}
 
         <section className="card">
-          <EnergyPieChart energyData={energyData} />
+          <MakroCalc/>
         </section>
         </div>
 
