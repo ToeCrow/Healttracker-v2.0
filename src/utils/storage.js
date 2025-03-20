@@ -1,4 +1,4 @@
-// src/storage/storage.js
+
 
 export const loadState = () => {
   try {
