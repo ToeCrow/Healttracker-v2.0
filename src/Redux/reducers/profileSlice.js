@@ -11,8 +11,8 @@ const profileSlice = createSlice({
     goal: 0,
     tdee: 0,
     birthDate: "åååå-mm-dd",
-    proteinIntake: 2,
-    fatIntake: 0.2,
+    proteinLevel: 2,
+    fatLevel: 0.2,
   },
   reducers: {
     addWeight: (state, action) => {
@@ -60,11 +60,11 @@ const profileSlice = createSlice({
     setBirthDate: (state, action) => {
       state.birthDate = action.payload;
     },
-    setProteinIntake: (state, action) => {
-      state.proteinIntake = action.payload;
+    setProteinLevel: (state, action) => {
+      state.proteinLevel = action.payload;
     },
-    setFatIntake: (state, action) => {
-      state.fatIntake = action.payload;
+    setFatLevel: (state, action) => {
+      state.fatLevel = action.payload;
     },
   },
 });
@@ -83,8 +83,8 @@ export const {
   setGoal,
   setTDEE,
   setBirthDate,
-  setProteinIntake,
-  setFatIntake
+  setProteinLevel,
+  setFatLevel
 } = profileSlice.actions;
 
 export const selectTDEE = (state) => state.profile.tdee;

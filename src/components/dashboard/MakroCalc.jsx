@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setProteinIntake, setFatIntake } from '@/Redux/reducers/profileSlice';
+import { setProteinLevel, setFatLevel } from '@/Redux/reducers/profileSlice';
 import EnergyPieChart from '../EnergyPieChart';
 
 const MakroCalc = () => {
   const tdee = useSelector((state) => state.profile.tdee);
-  const proteinIntake = useSelector((state) => state.profile.proteinIntake);
-  const fatIntake = useSelector((state) => state.profile.fatIntake);
+  const proteinLevel = useSelector((state) => state.profile.proteinLevel);
+  const fatLevel = useSelector((state) => state.profile.fatLevel);
   const weight = useSelector((state) => state.profile.weight);
   const dispatch = useDispatch();
   
@@ -26,14 +26,14 @@ const MakroCalc = () => {
     // Säkerställ att värden är nummer
     const validTDEE = parseFloat(tdee) || 0;
     const validWeight = parseFloat(latestWeight) || 0;
-    const validProteinIntake = parseFloat(proteinIntake) || 0;
-    const validFatIntake = parseFloat(fatIntake) || 0;
+    const validProteinLevel = parseFloat(proteinLevel) || 0;
+    const validFatLevel = parseFloat(fatLevel) || 0;
 
-    const proteinGrams = validWeight * validProteinIntake;
+    const proteinGrams = validWeight * validProteinLevel;
     const proteinKcal = proteinGrams * 4;
     const proteinPct = (proteinKcal / validTDEE) * 100;
 
-    const fatGrams = (validTDEE * validFatIntake) / 9;
+    const fatGrams = (validTDEE * validFatLevel) / 9;
     const fatKcal = fatGrams * 9;
     const fatPct = (fatKcal / validTDEE) * 100;
 
@@ -51,7 +51,7 @@ const MakroCalc = () => {
     setGramOfCarbohydrates(Math.round(carbohydratesGrams));
     setKcalOfCarbohydrates(Math.round(carbohydratesKcal));
     setProcentOfCarbohydrates(Math.round(carbohydratesPct));
-  }, [tdee, weight, proteinIntake, fatIntake]); // Beräkningar körs när dessa värden ändras
+  }, [tdee, weight, proteinLevel, fatLevel]); // Beräkningar körs när dessa värden ändras
 
   return (
     <div>
@@ -61,17 +61,17 @@ const MakroCalc = () => {
         <span className="font-bold">{Math.round(tdee)} kcal</span>
       </h2>
       
-      <label htmlFor="protein-intake" className="label-custom">
+      <label htmlFor="protein-level" className="label-custom">
         Välj proteinintag:
       </label>
       <select
-        id="protein-intake"
-        value={proteinIntake}
+        id="protein-level"
+        value={proteinLevel}
         required
         onChange={(e) =>
-          dispatch(setProteinIntake(parseFloat(e.target.value)))
+          dispatch(setProteinLevel(parseFloat(e.target.value)))
         }
-        className={`block w-full border rounded p-2 mb-4 ${proteinIntake ? "" : "border-accent border-2"}`}
+        className={`block w-full border rounded p-2 mb-4 ${proteinLevel ? "" : "border-accent border-2"}`}
       >
         <option value={1.5}>1,5 gram/kg vikt</option>
         <option value={1.6}>1,6 gram/kg vikt</option> 
@@ -83,17 +83,17 @@ const MakroCalc = () => {
         <option value={2.2}>2,2 gram/kg vikt</option>
       </select>
 
-      <label htmlFor="fat-intake" className="label-custom">
+      <label htmlFor="fat-level" className="label-custom">
         Välj fettintag:
       </label>
       <select
-        id="fat-intake"
-        value={fatIntake}
+        id="fat-level"
+        value={fatLevel}
         required
         onChange={(e) =>
-          dispatch(setFatIntake(parseFloat(e.target.value)))
+          dispatch(setFatLevel(parseFloat(e.target.value)))
         }
-        className={`block w-full border rounded p-2 mb-4 ${fatIntake ? "" : "border-accent border-2"}`}
+        className={`block w-full border rounded p-2 mb-4 ${fatLevel ? "" : "border-accent border-2"}`}
       >
         <option value={0.15}>15%</option>
         <option value={0.2}>20%</option> 
