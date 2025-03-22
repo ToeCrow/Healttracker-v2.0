@@ -108,28 +108,28 @@ const MakroCalc = () => {
             <tr>
               <th className="p-2"></th>
               <th className="border border-gray-300 p-2">Gram</th>
-              <th className="border border-gray-300 p-2">Kcal</th>
-              <th className="border border-gray-300 p-2">Energiprocent</th>
+              <th className="border border-gray-300 p-2 kcal">Kcal</th>
+              <th className="border border-gray-300 p-2 energiprocent">E%</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className="border border-gray-300 p-2">Protein:</td>
               <td className="border border-gray-300 p-2">{gramOfProtein}</td>
-              <td className="border border-gray-300 p-2">{kcalOfProtein}</td>
-              <td className="border border-gray-300 p-2">{procentOfProtein}%</td>
+              <td className="border border-gray-300 p-2 kcal">{kcalOfProtein}</td>
+              <td className="border border-gray-300 p-2 energiprocent">{procentOfProtein}%</td>
             </tr>
             <tr>
               <td className="border border-gray-300 p-2">Kolhydrater:</td>
               <td className="border border-gray-300 p-2">{gramOfCarbohydrates}</td>
-              <td className="border border-gray-300 p-2">{kcalOfCarbohydrates}</td>
-              <td className="border border-gray-300 p-2">{procentOfCarbohydrates}%</td>
+              <td className="border border-gray-300 p-2 kcal">{kcalOfCarbohydrates}</td>
+              <td className="border border-gray-300 p-2 energiprocent">{procentOfCarbohydrates}%</td>
             </tr>
             <tr>
               <td className="border border-gray-300 p-2">Fett:</td>
               <td className="border border-gray-300 p-2">{gramOfFat}</td>
-              <td className="border border-gray-300 p-2">{kcalOfFat}</td>
-              <td className="border border-gray-300 p-2">{procentOfFat}%</td>
+              <td className="border border-gray-300 p-2 kcal">{kcalOfFat}</td>
+              <td className="border border-gray-300 p-2 energiprocent">{procentOfFat}%</td>
             </tr>
           </tbody>
         </table>

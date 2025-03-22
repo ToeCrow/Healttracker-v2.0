@@ -142,3 +142,45 @@
 .label-custom {
   @apply block mb-2 font-bold text-left text-accent; /* Använd Tailwind's @apply för att kombinera klasser */
 }
+
+@media (max-width: 320px) {
+  .kcal {
+    display: none; /* Döljer energiprocent-kolumnen */
+  }
+}
+@media (max-width: 360px) {
+  .energiprocent {
+    display: none; /* Döljer energiprocent-kolumnen */
+  }
+  body {
+    font-size: 0.4rem; 
+  }
+}
+
+@media (max-width: 412px) {
+  body {
+    font-size: 0.75rem; 
+  }
+
+  .label-custom {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-custom {
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* 1 kolumn */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1140px) {
+  .grid-cols-custom {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 kolumner */
+  }
+}
+
+@media (min-width: 1140px) {
+  .grid-cols-custom {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 kolumner */
+  }
+}

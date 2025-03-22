@@ -71,7 +71,7 @@ function Navbar() {
           </li>
           <li className="my-2">
             <NavLink
-              to="/profilecard"
+              to="/profileform"
               className={({ isActive }) => 
                 `px-4 py-2 rounded-md ${isActive ? 'underline' : 'hover:bg-accent'}`
               }

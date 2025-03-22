@@ -1,6 +1,7 @@
 import React from 'react'
 import Logo from './Logo'
 import Navbar from './Navbar'
+import DarkModeToggle from './DarkModeToggle'
 
 
 const Header = () => {
@@ -9,6 +10,7 @@ const Header = () => {
       <Logo onClick={() => { window.location.href = '/' }} />
         <h1 className='ml-4 text-4xl '>Hälsokollen</h1>
       <Navbar />
+      <DarkModeToggle />
     </header>
   )
 }

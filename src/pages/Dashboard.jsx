@@ -8,7 +8,7 @@ import MakroCalc from '../components/dashboard/MakroCalc';
 const Dashboard = () => {
   return (
     <main className='flex justify-center items-start'>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start p-4'>
+      <div className='grid grid-cols-1 grid-cols-custom gap-4 items-start p-4'>
 
         {/* Left Column */}
         <div className="flex flex-col gap-4">
