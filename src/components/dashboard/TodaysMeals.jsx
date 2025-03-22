@@ -32,6 +32,10 @@ const TodaysMeals = ( ) => {
         </div>
       )}
 
+      <div>
+        <Data />
+      </div>
+
     </section>
   );
 };
