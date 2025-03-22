@@ -19,7 +19,6 @@ const DarkModeToggle = () => {
       className="flex items-center p-2 bg-gray-800 text-white rounded-md"
     >
       {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-      {/* <span className="ml-2">{isDarkMode ? 'Ljust läge' : 'Mörkt läge'}</span> */}
     </button>
   );
 };

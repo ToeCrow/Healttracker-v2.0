@@ -55,11 +55,11 @@ const MakroCalc = () => {
 
   return (
     <div className="max-w-sm mx-auto bg-white text-black rounded-lg shadow-md p-6 mt-4 fixed-width">
-      <h2 className="text-lg text-green-600 mt-4 text-center">Hitta dina makros</h2>
-      <h2 className="text-lg text-green-600 mt-4 text-center">
+      <h2 className="text-2xl font-bold text-green-600 mb-4">Hitta dina makros</h2>
+      {/* <h2 className="text-lg text-green-600 mt-4 text-center">
         Ditt totala dagliga energibehov: <br />
         <span className="font-bold">{Math.round(tdee)} kcal</span>
-      </h2>
+      </h2> */}
       
       <label htmlFor="protein-level" className="label-custom">
         Välj proteinintag:

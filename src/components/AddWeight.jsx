@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { addWeight } from '../Redux/reducers/profileSlice'
 import { Button } from './ui/button'
 
-const AddWeight = ({onSubmit}) => {
+const AddWeight = () => {
 
   const [newWeight, setNewWeight] = useState(''); 
   const dispatch = useDispatch();
@@ -20,7 +20,6 @@ const AddWeight = ({onSubmit}) => {
         date: formattedDate, // Lägg till datumet i vikten
       }));
       setNewWeight('');
-      onSubmit(); // Notify parent (Dashboard) to switch back to CurrentWeight
     }
   };
 
