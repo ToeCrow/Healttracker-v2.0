@@ -54,7 +54,7 @@ const ProfileCard = () => {
           <img src="src\assets\profilbild.jpg" alt="Profilbild" className="rounded-full w-28 h-28 object-cover" />
         </div>
 
-        <p className="mb-2 text-left text-lg"><strong>Vikt:</strong> {latestWeight} kg {weightChange < 0 ? `(${weightChange} kg)` : ''}</p>
+        <p className="mb-2 text-left text-lg"><strong>Vikt:</strong> {latestWeight} kg {weightChange < 0 ? `(${weightChange.toFixed(1)} kg)` : ''}</p>
         <p className="mb-2 text-left text-lg"><strong>Längd:</strong> {height} cm</p>
         <p className="mb-2 text-left text-lg"><strong>Ålder:</strong> {age} år</p>
         <p className="mb-2 text-left text-lg"><strong>Aktivitetsnivå:</strong> {getActivityLevelDescription(activityLevel)}</p>
