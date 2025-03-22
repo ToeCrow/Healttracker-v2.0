@@ -7,16 +7,14 @@ import Footer from './components/Footer'
 
 function App() {
 
-//   useEffect(() => {
-//   // Load mealData to localStorage
-//   localStorage.setItem("mealLog", JSON.stringify(mealLog));
-//   console.log("mealLog added to local storage:", mealLog);
-// }, []);
+
 
   return (
     <div className="flex flex-col min-h-screen">
+    <a href="#main-content" className="absolute top-[-40px] left-0 bg-black text-white p-2 z-50 transition-all duration-300 focus:top-2 focus:block">
+    Hoppa till innehåll
+    </a>
     <Header />
-    {console.log("Outlet should render below")}
     <Outlet />
     <Footer />
     </div>

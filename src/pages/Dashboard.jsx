@@ -2,7 +2,7 @@ import React from 'react';
 import AddWeight from '../components/AddWeight';
 import TodaysMeals from '../components/dashboard/TodaysMeals';
 import KcalStatus from '../components/dashboard/KcalStatus';
-import ProfileCard from './ProfileCard';
+import ProfileCard from '../components/dashboard/ProfileCard';
 import MakroCalc from '../components/dashboard/MakroCalc';
 
 const Dashboard = () => {
