@@ -39,13 +39,7 @@ const AddWeight = ({onSubmit}) => {
       className="block w-full border rounded p-2 mb-4"
     />
     <Button onClick={handleAddWeight} className="w-full">Registrera vikt</Button>
-    <Button 
-      variant="secondary"
-      onClick={onSubmit} 
-      className="w-full mt-2"
-    >
-      Avbryt
-    </Button>
+    
     </div>
   )
 }

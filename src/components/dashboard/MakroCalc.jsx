@@ -54,7 +54,7 @@ const MakroCalc = () => {
   }, [tdee, weight, proteinLevel, fatLevel]); // Beräkningar körs när dessa värden ändras
 
   return (
-    <div>
+    <div className="max-w-sm mx-auto bg-white text-black rounded-lg shadow-md p-6 mt-4 fixed-width">
       <h2 className="text-lg text-green-600 mt-4 text-center">Hitta dina makros</h2>
       <h2 className="text-lg text-green-600 mt-4 text-center">
         Ditt totala dagliga energibehov: <br />
@@ -102,8 +102,6 @@ const MakroCalc = () => {
         <option value={0.35}>35%</option>       
       </select>
 
-      <EnergyPieChart energyData={[procentOfCarbohydrates, procentOfFat, procentOfProtein]} />
-
       <div className="bg-gray-100 p-5">
         <table className="w-full border-collapse">
           <thead>
@@ -136,6 +134,9 @@ const MakroCalc = () => {
           </tbody>
         </table>
       </div>
+
+      <EnergyPieChart energyData={[procentOfCarbohydrates, procentOfFat, procentOfProtein]} />
+
     </div>
   );
 }

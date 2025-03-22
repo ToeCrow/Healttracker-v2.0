@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import AddWeight from '../components/AddWeight';
 import { Button } from '@/components/ui/button';
 
 const ProfileCard = () => {

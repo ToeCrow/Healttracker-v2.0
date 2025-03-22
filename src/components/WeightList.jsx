@@ -8,7 +8,7 @@ function WeightList({weightData}) {
   const sortedWeightData = [...weightData].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
-    <div className='card mx-auto'>
+    <div  className="max-w-sm mx-auto bg-white text-black rounded-lg shadow-md p-6 mt-4 fixed-width">
       <h3 className='text-lg font-bold text-gray-700 mb-4'>Historik Vikt</h3>
       {sortedWeightData.length > 0 ? (
         sortedWeightData.map((weight) => (
