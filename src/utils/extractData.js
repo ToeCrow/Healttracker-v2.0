@@ -71124,6 +71124,7 @@ export function extractNutritionalData() {
   
   return data.livsmedel.map(item => ({
     namn: item.namn,
+    nummer: item.nummer,
     naringsvardenLink: `${baseUrl}${item.links.find(link => link.rel === 'naringvarden').href}`
   }));
 }
