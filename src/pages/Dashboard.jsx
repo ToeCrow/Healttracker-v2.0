@@ -4,6 +4,7 @@ import TodaysMeals from '../components/dashboard/TodaysMeals';
 import KcalStatus from '../components/dashboard/KcalStatus';
 import ProfileCard from '../components/dashboard/ProfileCard';
 import MakroCalc from '../components/dashboard/MakroCalc';
+import MacrosBar from '../components/MacrosBar';
 
 const Dashboard = () => {
   return (
@@ -25,6 +26,7 @@ const Dashboard = () => {
         <div className="flex flex-col gap-4">
           <KcalStatus />
           <TodaysMeals />
+          <MacrosBar />
         </div>
 
       </div>

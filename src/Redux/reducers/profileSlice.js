@@ -11,8 +11,21 @@ const profileSlice = createSlice({
     goal: 0,
     tdee: 0,
     birthDate: "åååå-mm-dd",
-    proteinLevel: 2,
-    fatLevel: 0.2,
+    proteinLevel: 2, // Standardvärde: 2g/kg
+    fatLevel: 0.2, // Standardvärde: 20% av TDEE
+
+    // 🆕 Makronutrienter lagrade i Redux
+    macros: {
+      proteinGrams: 0,
+      proteinKcal: 0,
+      proteinPct: 0,
+      fatGrams: 0,
+      fatKcal: 0,
+      fatPct: 0,
+      carbohydratesGrams: 0,
+      carbohydratesKcal: 0,
+      carbohydratesPct: 0,
+    },
   },
   reducers: {
     addWeight: (state, action) => {
@@ -34,7 +47,7 @@ const profileSlice = createSlice({
       }
     },
     removeWeight: (state, action) => {
-      state.weight = state.weight.filter(weight => weight.id !== action.payload.id)
+      state.weight = state.weight.filter(weight => weight.id !== action.payload.id);
     },
     setGender: (state, action) => {
       state.gender = action.payload;
@@ -66,10 +79,12 @@ const profileSlice = createSlice({
     setFatLevel: (state, action) => {
       state.fatLevel = action.payload;
     },
+    setMacros: (state, action) => {
+      state.macros = action.payload;
+    }
   },
 });
 
-// Exportera reducer och actions
 export const {
   addWeight,
   displayWeight,
@@ -84,10 +99,10 @@ export const {
   setTDEE,
   setBirthDate,
   setProteinLevel,
-  setFatLevel
+  setFatLevel,
+  setMacros
 } = profileSlice.actions;
 
 export const selectTDEE = (state) => state.profile.tdee;
 
 export default profileSlice.reducer;
-
