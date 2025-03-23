@@ -71118,13 +71118,4 @@ const data ={
   ]
 };
 
-// Funktion för att extrahera data
-export function extractNutritionalData() {
-  const baseUrl = 'https://dataportal.livsmedelsverket.se/livsmedel';
-  
-  return data.livsmedel.map(item => ({
-    namn: item.namn,
-    nummer: item.nummer,
-    naringsvardenLink: `${baseUrl}${item.links.find(link => link.rel === 'naringvarden').href}`
-  }));
-}
+export default data;
