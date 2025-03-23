@@ -2,10 +2,11 @@ import React from 'react'
 import MacrosBar from './MacrosBar'
 import KcalStatus from './KcalStatus'
 import TodaysMeals from './TodaysMeals'
+import MealTracker from '../MealTracker/MealTracker'
 
 const MealPlaner = () => {
   return (
-    <main className="max-w-sm mx-auto rounded-lg shadow-md p-2 mt-4 fixed-width card">
+    <main className='p-0'>
     <section className="mealplan-header">
       <div className="calorie-counter">
         <KcalStatus />
@@ -13,6 +14,7 @@ const MealPlaner = () => {
       <MacrosBar />
     </section>
     <section className="mealplan-day">
+      <MealTracker />
       <TodaysMeals />
     </section>
     </main>

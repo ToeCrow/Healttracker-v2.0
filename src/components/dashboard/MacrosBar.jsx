@@ -5,7 +5,7 @@ const MacrosBar = () => {
   const macros = useSelector((state) => state.profile.macros) || {};
 
   return (
-    <div className='flex justify-between border-2 border-black p-2 my-4'>
+    <div className='flex justify-between border-2 border-black p-2 m-4 rounded'>
       <div className='flex-col'>
       <p className='font-bold text-xs'>Protein:</p>
       {/* Måste få in hur mycket g av de olika som har ätits idag */}
