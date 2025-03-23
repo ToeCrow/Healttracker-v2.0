@@ -123,7 +123,7 @@ const ProfileForm = () => {
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start p-4 max-w-4xl w-full'>
         <div className="flex flex-col gap-4">
           <form className="w-full card p-6 rounded-lg shadow-md mt-4 fixed-width">
-            <h2 className="text-2xl font-bold text-center text-green-600 mb-4">
+            <h2 className="text-2xl font-bold text-center mb-4">
               Profil
             </h2>
 
@@ -257,7 +257,7 @@ const ProfileForm = () => {
             </p>
 
             {tdee !==0 && (
-              <h2 className="text-lg text-green-600 mt-4 text-center">
+              <h2 className="text-lg mt-4 text-center">
                 Ditt totala dagliga energibehov: <br />
                 <span className="font-bold">{Math.round(tdee)} kcal</span>
               </h2>

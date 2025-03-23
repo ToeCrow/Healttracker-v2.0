@@ -48,7 +48,7 @@ const ProfileCard = () => {
 
   return (
     <div className="max-w-sm mx-auto rounded-lg shadow-md p-6 mt-4 fixed-width card">
-        <h2 className="text-2xl font-bold text-green-600 mb-4">Profilinformation</h2>
+        <h2 className="text-2xl font-bold mb-4">Profilinformation</h2>
         
         <div className="flex justify-center mb-4">
           <img src="src\assets\profilbild.jpg" alt="Profilbild" className="rounded-full w-28 h-28 object-cover" />
@@ -63,7 +63,7 @@ const ProfileCard = () => {
 
         <Button 
           onClick={handleClick}
-          className="w-full text-white rounded py-2 transition "
+          className="w-full rounded py-2 transition "
         >
           Ändra Profil
         </Button>

@@ -44,7 +44,7 @@ const MakroCalc = () => {
 
   return (
     <div className="max-w-sm mx-autorounded-lg shadow-md p-6 card">
-      <h2 className="text-2xl font-bold text-green-600 mb-4">Hitta dina makros</h2>
+      <h2 className="text-2xl font-bold  mb-4">Hitta dina makros</h2>
 
       <label htmlFor="protein-level" className="label-custom">
         Välj proteinintag:
@@ -73,7 +73,7 @@ const MakroCalc = () => {
         <option value={0.3}>30%</option>
       </select>
 
-      <div className="bg-gray-100 p-5">
+      <div className=" p-5">
         <table className="w-full border-collapse">
           <thead>
             <tr>

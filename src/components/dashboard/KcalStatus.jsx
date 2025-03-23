@@ -8,29 +8,26 @@ const KcalStatus = () => {
 
   const todaysDate = new Date().toISOString().split('T')[0];
 
-  console.log("TDEE from Redux:", tdee);
-  console.log("Meal Logs from Redux:", meals);
-
-  // Filter meals for today
+  // Filtrera måltider för idag
   const todaysMeals = meals.filter((meal) => meal.date === todaysDate);
-  console.log("Today's Meals:", todaysMeals);
 
-  // Calculate total consumed calories for today
-  const consumedCalories = todaysMeals.reduce((total, meal) => {
-    console.log(`Meal: ${meal.name}, Calories: ${meal.energy}`);
-    console.log("total:", total)
-    return Number(total) + Number((meal.energy || 0));
-  }, 0);
+  // Räkna ut kalorier som konsumerats idag
+  const consumedCalories = todaysMeals.reduce((total, meal) => total + Number(meal.energy || 0), 0);
 
-  console.log("Total Consumed Calories Today:", consumedCalories);
-
-  const remainingKcal = tdee - consumedCalories; // Calculate remaining kcal
+  // Räkna ut om det är kvar eller över
+  const remainingKcal = tdee - consumedCalories;
+  const isOver = remainingKcal < 0;
 
   return (
-    <section className="max-w-sm mx-auto card rounded-lg shadow-md p-6 mt-4 fixed-width">
-      <p className='font-bold text-primary text-2xl'>{Math.round(remainingKcal)}</p>
-      <p>kcal kvar idag</p>
-    </section>
+    <div className="flex justify-center items-center m-6">
+      <div 
+        className={`w-32 h-32 flex flex-col justify-center items-center rounded-full border-4 
+          ${isOver ? 'border-red-500 text-red-500' : 'border-green-500 text-green-500'}`}
+      >
+        <p className="font-bold text-2xl">{Math.abs(Math.round(remainingKcal))}</p>
+        <p className="text-sm">{isOver ? 'KCAL ÖVER' : 'KCAL KVAR'}</p>
+      </div>
+    </div>
   );
 };
 

@@ -25,7 +25,7 @@ const AddWeight = () => {
 
   return (
     <div className="max-w-sm rounded-lg shadow-md p-6 fixed-width card">
-    <h3 className="text-xl font-bold text-green-600 mb-4">Registrera din nya vikt</h3>
+    <h3 className="text-xl font-bold mb-4">Registrera din nya vikt</h3>
     <label htmlFor="new-weight" className="sr-only">
       Ny vikt (kg)
     </label>

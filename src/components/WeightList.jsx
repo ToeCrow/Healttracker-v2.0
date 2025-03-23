@@ -1,5 +1,4 @@
 import React from 'react'
-import {Button} from './ui/button'
 import WeightListItem from './WeightListItem'
 
 function WeightList({weightData}) {
@@ -9,7 +8,7 @@ function WeightList({weightData}) {
 
   return (
     <div  className="max-w-sm mx-auto card rounded-lg shadow-md p-6 mt-4 fixed-width">
-      <h3 className='text-lg font-bold text-gray-700 mb-4'>Historik Vikt</h3>
+      <h3 className='text-lg font-bold mb-4'>Historik Vikt</h3>
       {sortedWeightData.length > 0 ? (
         sortedWeightData.map((weight) => (
           <WeightListItem key={weight.id} weightData={weight} />

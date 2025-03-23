@@ -1,10 +1,11 @@
 import React from 'react';
 import AddWeight from '../components/dashboard/AddWeight';
-import TodaysMeals from '../components/dashboard/TodaysMeals';
-import KcalStatus from '../components/dashboard/KcalStatus';
+// import TodaysMeals from '../components/dashboard/TodaysMeals';
+// import KcalStatus from '../components/dashboard/KcalStatus';
 import ProfileCard from '../components/dashboard/ProfileCard';
 import MakroCalc from '../components/dashboard/MakroCalc';
-import MacrosBar from '../components/MacrosBar';
+// import MacrosBar from '../components/MacrosBar';
+import MealPlaner from '../components/dashboard/MealPlaner';
 
 const Dashboard = () => {
   return (
@@ -24,9 +25,7 @@ const Dashboard = () => {
 
         {/* Right Column */}
         <div className="flex flex-col gap-4">
-          <KcalStatus />
-          <TodaysMeals />
-          <MacrosBar />
+          <MealPlaner />
         </div>
 
       </div>
