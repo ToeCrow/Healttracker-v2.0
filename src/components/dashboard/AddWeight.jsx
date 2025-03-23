@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addWeight } from '../Redux/reducers/profileSlice'
-import { Button } from './ui/button'
+import { addWeight } from '@/Redux/reducers/profileSlice'
+import { Button } from '@/components/ui/button'
 
 const AddWeight = () => {
 
@@ -24,7 +24,7 @@ const AddWeight = () => {
   };
 
   return (
-    <div className="max-w-sm bg-white rounded-lg shadow-md p-6 fixed-width">
+    <div className="max-w-sm rounded-lg shadow-md p-6 fixed-width card">
     <h3 className="text-xl font-bold text-green-600 mb-4">Registrera din nya vikt</h3>
     <label htmlFor="new-weight" className="sr-only">
       Ny vikt (kg)

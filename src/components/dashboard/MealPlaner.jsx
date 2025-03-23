@@ -6,7 +6,7 @@ const MealPlaner = () => {
     <>
     <section className="mealplan-header">
       <div className="calorie-counter">
-
+        
       </div>
       <MacrosBar />
     </section>

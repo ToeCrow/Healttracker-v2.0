@@ -68,7 +68,7 @@ const MealLog = () => {
     <main className='flex justify-center items-center min-h-screen'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start p-4 max-w-4xl w-full'>
         <div className="flex flex-col gap-4">
-          <form onSubmit={handleSubmit} className="bg-white shadow-md card px-8 pt-6 max-w-[500px]">
+          <form onSubmit={handleSubmit} className=" shadow-md card px-8 pt-6 max-w-[500px]">
             {error && <p className="text-red-500 text-xs italic mb-4">{error}</p>}
             <div className="mb-4">
               <label htmlFor="title" className="block text-accent text-sm font-bold mb-2 text-left">Måltid:</label>
