@@ -4,7 +4,7 @@ import { extractNutritionalData } from '../utils/extractData';
 const Data = () => {
 
   const extractedData = extractNutritionalData();
-  console.log(extractedData);
+  console.log('extractedData:', extractedData);
   
   return (
     <div>
