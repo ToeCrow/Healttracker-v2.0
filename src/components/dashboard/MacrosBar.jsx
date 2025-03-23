@@ -7,17 +7,17 @@ const MacrosBar = () => {
   return (
     <div className='flex justify-between border-2 border-black p-2 my-4'>
       <div className='flex-col'>
-      <p>Protein:</p>
+      <p className='font-bold text-xs'>Protein:</p>
       {/* Måste få in hur mycket g av de olika som har ätits idag */}
-      <p>{macros.proteinGrams}g</p>
+      <p className='font-bold text-xs'>0/{macros.proteinGrams}g</p>
       </div>
       <div className='flex-col'>
-      <p>Kolhydrater:</p>
-      <p>{macros.carbohydratesGrams}g</p>
+      <p className='font-bold text-xs'>Kolhydrater:</p>
+      <p className='font-bold text-xs'>0/{macros.carbohydratesGrams}g</p>
       </div>
       <div className='flex-col'>
-      <p>Fett:</p>
-      <p>{macros.fatGrams}g</p>
+      <p className='font-bold text-xs'>Fett:</p>
+      <p className='font-bold text-xs'>0/{macros.fatGrams}g</p>
       </div>
     </div>
   )

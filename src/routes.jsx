@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 import App from "./App";
 import Dashboard from "./pages/Dashboard";
+import MealTracker from "./components/MealTracker/MealTracker";
 
 // Ladda komponenter asynkront
 const MealLog = lazy(() => import("./pages/MealLog"));
@@ -31,14 +32,14 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
-      // {
-      //   path: "profilecard",
-      //   element: (
-      //     <Suspense fallback={<div className="p-4 text-2xl text-accent h-screen">Loading...</div>}>
-      //       <ProfileCard />
-      //     </Suspense>
-      //   ),
-      // },
+      {
+        path: "test",
+        element: (
+          <Suspense fallback={<div className="p-4 text-2xl text-accent h-screen">Loading...</div>}>
+            <MealTracker />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);

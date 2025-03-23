@@ -13,7 +13,7 @@ const TodaysMeals = ( ) => {
   const todaysMeals = meals.filter((meal) => meal.date === formattedDate);
 
   return (
-    <section className="max-w-sm mx-auto card rounded-lg shadow-md p-6 mt-4 fixed-width">
+    <section className="max-w-sm mx-auto card rounded-lg shadow-md p-2 mt-2 fixed-width">
       <h3 className='text-lg font-bold'>Dagens måltider </h3>
       <p className='text-sm text-gray-500'>{formattedDate}</p>
       {todaysMeals.length === 0 && <p className='text-sm text-gray-500 card'>Inga måltider registrerade idag.</p>}

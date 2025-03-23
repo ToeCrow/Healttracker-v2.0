@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { LayoutDashboard, User, Notebook } from 'lucide-react';
+import { LayoutDashboard, User, Notebook, Skull } from 'lucide-react';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +53,17 @@ function Navbar() {
           >
             <Notebook className="inline self-center h-full mr-2" />
             Måltider
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/test"
+            className={({ isActive }) => 
+              `p-4 rounded-md ${isActive ? 'underline' : 'hover:bg-accent'}`
+            }
+          >
+            <Skull className="inline self-center h-full mr-2" size={20} color="white" />
+            TEST
           </NavLink>
         </li>
       </ul>
