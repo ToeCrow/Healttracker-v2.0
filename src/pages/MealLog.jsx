@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addMeal, updateMeal } from "../Redux/reducers/mealSlice";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from '@/components/ui/button';
-import Data from '@/components/Data';
+
 
 const MealLog = () => {
 
@@ -131,10 +131,6 @@ const MealLog = () => {
         </div>
         <div className="flex flex-col gap-4">
           <MealList meals={mealLogs} onEdit={handleEdit} />
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Data />
         </div>
 
       </div>
