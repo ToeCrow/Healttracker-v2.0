@@ -18,6 +18,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.479.0",
     "node": "^23.9.0",
+    "node-fetch": "^3.3.2",
     "react": "^19.0.0",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0",
@@ -45,5 +46,10 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.14",
     "vite": "^6.2.1"
-  }
+  },
+  "description": "Healthtracker-v10 är en webbaserad applikation designad för att hjälpa användare att spåra och övervaka olika hälsoaspekter. Projektet utnyttjar moderna webbutvecklingsverktyg såsom Vite och Tailwind CSS för att erbjuda en snabb, responsiv och modulär utvecklingsmiljö.",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
