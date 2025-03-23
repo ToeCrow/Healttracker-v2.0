@@ -4,7 +4,7 @@ import React from 'react';
 const MealComponent = ({ mealName, kcal, onAdd }) => {
     return (
         <div
-            className="flex items-center justify-between p-4 cursor-pointer bg-gray-200 hover:bg-gray-300"
+            className="flex items-center justify-between p-4 cursor-pointer border-1  rounded-lg shadow-md"
             onClick={onAdd}
             role="button"
             aria-label={`Lägg till ${mealName}`}
