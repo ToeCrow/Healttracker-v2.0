@@ -55,7 +55,7 @@ function Navbar() {
             Måltider
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/test"
             className={({ isActive }) => 
@@ -65,7 +65,7 @@ function Navbar() {
             <Skull className="inline self-center h-full mr-2" size={20} color="white" />
             TEST
           </NavLink>
-        </li>
+        </li> */}
       </ul>
 
       {isOpen && (

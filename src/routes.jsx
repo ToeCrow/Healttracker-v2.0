@@ -32,14 +32,14 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
-      {
-        path: "test",
-        element: (
-          <Suspense fallback={<div className="p-4 text-2xl text-accent h-screen">Loading...</div>}>
-            <MealTracker />
-          </Suspense>
-        ),
-      },
+      // {
+      //   path: "test",
+      //   element: (
+      //     <Suspense fallback={<div className="p-4 text-2xl text-accent h-screen">Loading...</div>}>
+      //       <MealTracker />
+      //     </Suspense>
+      //   ),
+      // },
     ],
   },
 ]);

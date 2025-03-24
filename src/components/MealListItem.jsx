@@ -11,7 +11,7 @@ const MealListItem = ({ meal, onEdit = () => {}, editButton = null }) => {
 
   return (
     <details 
-      className="bg-white shadow-md rounded p-4 border-1 border-accent/30"
+      className=" shadow-md rounded p-4 border-1 border-accent/30"
       open={showDetails} // React controls the open state
     >
       <summary 
