@@ -56,7 +56,12 @@ const MakroCalc = () => {
         className="block w-full border rounded p-2 mb-4"
       >
         <option value={1.5}>1,5 gram/kg vikt</option>
+        <option value={1.6}>1,6 gram/kg vikt</option>
+        <option value={1.7}>1,7 gram/kg vikt</option>
+        <option value={1.8}>1,8 gram/kg vikt</option>
+        <option value={1.9}>1,9 gram/kg vikt</option>
         <option value={2}>2 gram/kg vikt</option>
+        <option value={2.1}>2,1 gram/kg vikt</option>
         <option value={2.2}>2,2 gram/kg vikt</option>
       </select>
 
@@ -69,8 +74,11 @@ const MakroCalc = () => {
         onChange={(e) => dispatch(setFatLevel(parseFloat(e.target.value)))}
         className="block w-full border rounded p-2 mb-4"
       >
+        <option value={0.15}>15%</option>
         <option value={0.2}>20%</option>
+        <option value={0.25}>25%</option>
         <option value={0.3}>30%</option>
+        <option value={0.35}>35%</option>
       </select>
 
       <div className=" p-5">
