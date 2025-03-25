@@ -13,6 +13,7 @@ import {
   addWeight,
 } from "../Redux/reducers/profileSlice";
 import { useNavigate } from "react-router-dom";
+import { calculateTDEE } from "../Redux/reducers/profileSlice";
 
 const ProfileForm = () => {
 
@@ -37,39 +38,41 @@ const ProfileForm = () => {
   }, [dispatch, gender, height, age, activityLevel, goal]);
 
   useEffect(() => {
-    calculateTDEE(); // Beräkna TDEE när goal ändras
-  }, [goal, weight, activityLevel]); // Lyssna på förändringar i dessa värden 
-
-  const calculateTDEE = () => {
-    const currentWeight = parseFloat(latestWeight);
-    const numericHeight = parseFloat(height);
-    const numericAge = parseInt(age, 10);
-    const numericActivityLevel = parseFloat(activityLevel);
-    const numericGoal = parseFloat(goal);
-
-    if (
-      isNaN(currentWeight) ||
-      !gender ||
-      isNaN(numericHeight) ||
-      isNaN(numericActivityLevel) ||
-      isNaN(numericGoal) ||
-      isNaN(numericAge)
-    ) {
-      return;
+    if (goal || weight.length) {
+      dispatch(calculateTDEE()); // Dispatch the thunk
     }
+  }, [goal, weight, activityLevel, dispatch]);
 
-    let bmr;
-    if (gender === "male") {
-      bmr =
-        88.36 + 13.4 * currentWeight + 4.8 * numericHeight - 5.7 * numericAge;
-    } else if (gender === "female") {
-      bmr =
-        447.6 + 9.2 * currentWeight + 3.1 * numericHeight - 4.3 * numericAge;
-    }
+  // const calculateTDEE = () => {
+  //   const currentWeight = parseFloat(latestWeight);
+  //   const numericHeight = parseFloat(height);
+  //   const numericAge = parseInt(age, 10);
+  //   const numericActivityLevel = parseFloat(activityLevel);
+  //   const numericGoal = parseFloat(goal);
 
-    const totalEnergyExpenditure = bmr * numericActivityLevel + numericGoal;
-    dispatch(setTDEE(totalEnergyExpenditure));
-  };
+  //   if (
+  //     isNaN(currentWeight) ||
+  //     !gender ||
+  //     isNaN(numericHeight) ||
+  //     isNaN(numericActivityLevel) ||
+  //     isNaN(numericGoal) ||
+  //     isNaN(numericAge)
+  //   ) {
+  //     return;
+  //   }
+
+  //   let bmr;
+  //   if (gender === "male") {
+  //     bmr =
+  //       88.36 + 13.4 * currentWeight + 4.8 * numericHeight - 5.7 * numericAge;
+  //   } else if (gender === "female") {
+  //     bmr =
+  //       447.6 + 9.2 * currentWeight + 3.1 * numericHeight - 4.3 * numericAge;
+  //   }
+
+  //   const totalEnergyExpenditure = bmr * numericActivityLevel + numericGoal;
+  //   dispatch(setTDEE(totalEnergyExpenditure));
+  // };
 
   const handleWeightChange = (e) => {
     setWeightInput(e.target.value);

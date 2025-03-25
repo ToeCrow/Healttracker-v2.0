@@ -1,4 +1,44 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
+
+// Define the thunk
+export const calculateTDEE = createAsyncThunk(
+  'profile/calculateTDEE',
+  async (_, { getState, dispatch }) => {
+    const state = getState().profile;
+    const { gender, weight, height, age, activityLevel, goal } = state;
+
+    const latestWeight = weight.length > 0 ? weight[weight.length - 1].weight : 0;
+    
+    const currentWeight = parseFloat(latestWeight);
+    const numericHeight = parseFloat(height);
+    const numericAge = parseInt(age, 10);
+    const numericActivityLevel = parseFloat(activityLevel);
+    const numericGoal = parseFloat(goal);
+
+    if (
+      isNaN(currentWeight) ||
+      !gender ||
+      isNaN(numericHeight) ||
+      isNaN(numericActivityLevel) ||
+      isNaN(numericGoal) ||
+      isNaN(numericAge)
+    ) {
+      return;
+    }
+
+    let bmr;
+    if (gender === "male") {
+      bmr =
+        88.36 + 13.4 * currentWeight + 4.8 * numericHeight - 5.7 * numericAge;
+    } else if (gender === "female") {
+      bmr =
+        447.6 + 9.2 * currentWeight + 3.1 * numericHeight - 4.3 * numericAge;
+    }
+
+    const totalEnergyExpenditure = bmr * numericActivityLevel + numericGoal;
+    dispatch(setTDEE(totalEnergyExpenditure));
+  }
+);
 
 const profileSlice = createSlice({
   name: "profile",
@@ -81,7 +121,13 @@ const profileSlice = createSlice({
     },
     setMacros: (state, action) => {
       state.macros = action.payload;
-    }
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(calculateTDEE.fulfilled, (state, action) => {
+        // Handle any additional state updates if necessary
+      });
   },
 });
 
