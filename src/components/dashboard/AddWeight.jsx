@@ -36,13 +36,16 @@ const AddWeight = () => {
         id="new-weight"
         value={newWeight}
         onChange={(e) => setNewWeight(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleAddWeight();
+          }
+        }}
         placeholder="Ny vikt (kg)"
         className="block w-full border rounded p-2 mb-4"
       />
       <Button onClick={handleAddWeight} className="w-full">Registrera vikt</Button>
-      {tdee > 0 && (
-        <p className="mt-4">Ditt totala dagliga energibehov (TDEE): {Math.round(tdee)} kcal</p>
-      )}
+      
     </div>
   );
 };
