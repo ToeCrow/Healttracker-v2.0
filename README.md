@@ -24,8 +24,8 @@ Följ dessa steg för att komma igång med projektet lokalt:
 
 1. **Klona repot:**
    ```bash
-   git clone https://github.com/BenjaminBerhane/Healthtracker-v10.git
-   cd Healthtracker-v10
+   git clone https://github.com/ToeCrow/Healttracker-v2.0
+   cd Healthtracker-v2.0
    ```
 
 2. **Installera beroenden:**
