@@ -9,7 +9,7 @@ import MealPlaner from '../components/dashboard/MealPlaner';
 
 const Dashboard = () => {
   return (
-    <main className='flex justify-center items-start'>
+    <main id='main-content' className='flex justify-center items-start'>
       <div className='grid grid-cols-1 grid-cols-custom gap-4 items-start p-4'>
 
         {/* Left Column */}

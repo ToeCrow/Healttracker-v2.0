@@ -1,13 +1,21 @@
-# Healthtracker-v10
+# Healthtracker-v2.0
 
-Healthtracker-v10 är en webbaserad applikation designad för att hjälpa användare att spåra och övervaka olika hälsoaspekter. Projektet utnyttjar moderna webbutvecklingsverktyg såsom Vite och Tailwind CSS för att erbjuda en snabb, responsiv och modulär utvecklingsmiljö.
+Healthtracker-v2.0 är en webbaserad applikation designad för att hjälpa användare att spåra och övervaka olika hälsoaspekter. Projektet utnyttjar moderna webbutvecklingsverktyg såsom Vite och Tailwind CSS för att erbjuda en snabb, responsiv och modulär utvecklingsmiljö.
 
 ## Funktioner
 
-- **Hälsospårning:** Logga och övervaka vikt, blodtryck, sömn och andra hälsoindikatorer.
+- **Hälsospårning:** Logga och övervaka vikt, samt se vilket kalloribehov man har för sin aktivitetsnivå.
 - **Responsiv design:** Använder Tailwind CSS för att säkerställa en mobilvänlig och responsiv layout.
 - **Modern utvecklingsmiljö:** Bygger på Vite för snabba omstarter och en förbättrad utvecklingsupplevelse.
 - **Modulär arkitektur:** Enkel att utöka och underhålla tack vare en tydlig mappstruktur.
+
+## Senaste uppdateringar
+
+- **Makroberäkningar:** Alternativ har lagts till i makronutrientberäkningarna för mer flexibilitet. 
+- **Globala funktioner:** Funktionen `calculateTDEE` har gjorts global för att förbättra tillgängligheten i hela applikationen. 
+- **Presentationsförberedelser:** Huvudversionen har förberetts för presentation, vilket indikerar en stabil och färdigställd version. 
+- **Mörkt läge:** Stöd för mörkt läge har implementerats för att förbättra användarupplevelsen i olika ljusförhållanden. 
+- **Måltidsplanerare:** Utveckling av en måltidsplanerare har påbörjats för att hjälpa användare att planera sina måltider effektivt. 
 
 ## Installation
 
@@ -66,4 +74,5 @@ Observera att ingen licens har specificerats i detta repository. Vänligen konta
 ## Support
 
 Har du frågor eller behöver hjälp med projektet? Öppna gärna en issue i repot så hjälper vi dig.
+
 

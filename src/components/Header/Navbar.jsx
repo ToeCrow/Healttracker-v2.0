@@ -1,14 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { LayoutDashboard, User, Notebook, Skull } from 'lucide-react';
+import { LayoutDashboard, User, Notebook } from 'lucide-react';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const firstMenuItemRef = useRef(null);
+  const lastMenuItemRef = useRef(null);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
+  // Close menu on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+      if (isOpen) {
+        if (e.key === "Tab") {
+          if (e.shiftKey) {
+            // If shift + tab is pressed and focus is on the first item, move focus to the last item
+            if (document.activeElement === firstMenuItemRef.current) {
+              e.preventDefault();
+              lastMenuItemRef.current.focus();
+            }
+          } else {
+            // If tab is pressed and focus is on the last item, move focus to the first item
+            if (document.activeElement === lastMenuItemRef.current) {
+              e.preventDefault();
+              firstMenuItemRef.current.focus();
+            }
+          }
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
 
   return (
     <nav className="flex justify-end w-full">
@@ -55,27 +89,18 @@ function Navbar() {
             Måltider
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/test"
-            className={({ isActive }) => 
-              `p-4 rounded-md ${isActive ? 'underline' : 'hover:bg-accent'}`
-            }
-          >
-            <Skull className="inline self-center h-full mr-2" size={20} color="white" />
-            TEST
-          </NavLink>
-        </li>
       </ul>
 
       {isOpen && (
-        <ul className="md:hidden flex flex-col mt-4">
+        <ul className="md:hidden flex flex-col mt-4" ref={menuRef}>
           <li className="my-2">
             <NavLink
               to="/"
+              ref={firstMenuItemRef}
               className={({ isActive }) => 
                 `px-4 py-2 rounded-md ${isActive ? 'underline' : 'hover:bg-accent'}`
               }
+              onClick={() => setIsOpen(false)}
             >
               Dashboard
             </NavLink>
@@ -86,6 +111,7 @@ function Navbar() {
               className={({ isActive }) => 
                 `px-4 py-2 rounded-md ${isActive ? 'underline' : 'hover:bg-accent'}`
               }
+              onClick={() => setIsOpen(false)}
             >
               Profile
             </NavLink>
@@ -93,9 +119,11 @@ function Navbar() {
           <li className="my-2">
             <NavLink
               to="/mealLog"
+              ref={lastMenuItemRef}
               className={({ isActive }) => 
                 `px-4 py-2 rounded-md ${isActive ? 'underline' : 'hover:bg-accent'}`
               }
+              onClick={() => setIsOpen(false)}
             >
               Meallog
             </NavLink>

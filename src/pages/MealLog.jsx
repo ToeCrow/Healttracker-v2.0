@@ -65,7 +65,7 @@ const MealLog = () => {
   };
 
   return (
-    <main className='flex justify-center items-center min-h-screen'>
+    <main id='main-content' className='flex justify-center items-center min-h-screen'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start p-4 max-w-4xl w-full'>
         <div className="flex flex-col gap-4">
           <form onSubmit={handleSubmit} className=" shadow-md card px-8 pt-6 max-w-[500px]">

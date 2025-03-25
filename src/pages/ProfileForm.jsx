@@ -122,7 +122,7 @@ const ProfileForm = () => {
   };
 
   return (
-    <main className="flex flex-col items-center p-4 gap-4">
+    <main id='main-content' className="flex flex-col items-center p-4 gap-4">
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start p-4 max-w-4xl w-full'>
         <div className="flex flex-col gap-4">
           <form className="w-full card p-6 rounded-lg shadow-md mt-4 fixed-width">
