@@ -11,11 +11,12 @@ Healthtracker-v2.0 är en webbaserad applikation designad för att hjälpa anvä
 
 ## Senaste uppdateringar
 
-- **Makroberäkningar:** Alternativ har lagts till i makronutrientberäkningarna för mer flexibilitet. 
-- **Globala funktioner:** Funktionen `calculateTDEE` har gjorts global för att förbättra tillgängligheten i hela applikationen. 
-- **Presentationsförberedelser:** Huvudversionen har förberetts för presentation, vilket indikerar en stabil och färdigställd version. 
-- **Mörkt läge:** Stöd för mörkt läge har implementerats för att förbättra användarupplevelsen i olika ljusförhållanden. 
-- **Måltidsplanerare:** Utveckling av en måltidsplanerare har påbörjats för att hjälpa användare att planera sina måltider effektivt. 
+- **Makroberäkningar:** Alternativ har lagts till i makronutrientberäkningarna för mer flexibilitet. 
+- **Globala funktioner:** Funktionen `calculateTDEE` har gjorts global för att förbättra tillgängligheten i hela applikationen. 
+- **Presentationsförberedelser:** Huvudversionen har förberetts för presentation, med bättre responsivitet genom att använda tailwind. 
+- **WCAG:** Säkerställt att det går att navigera med tangentbordet och skapat en skiplink
+- **Mörkt läge:** Stöd för mörkt läge har implementerats för att förbättra användarupplevelsen i olika ljusförhållanden. 
+- **Måltidsplanerare:** Utveckling av en måltidsplanerare har påbörjats för att hjälpa användare att planera sina måltider effektivt. 
 
 ## Installation
 
