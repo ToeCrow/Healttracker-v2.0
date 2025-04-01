@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 const AddWeight = () => {
   const [newWeight, setNewWeight] = useState('');
   const dispatch = useDispatch();
-  const tdee = useSelector((state) => state.profile.tdee); // Get global TDEE
+  
 
   const handleAddWeight = () => {
     if (newWeight) {

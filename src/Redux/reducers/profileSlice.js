@@ -54,7 +54,7 @@ const profileSlice = createSlice({
     proteinLevel: 2, // Standardvärde: 2g/kg
     fatLevel: 0.2, // Standardvärde: 20% av TDEE
 
-    // 🆕 Makronutrienter lagrade i Redux
+    // Värdet av Makronutrienter lagrade i Redux
     macros: {
       proteinGrams: 0,
       proteinKcal: 0,
