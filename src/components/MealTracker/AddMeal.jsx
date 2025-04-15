@@ -111,6 +111,7 @@ const AddMeal = () => {
       <input
         type="text"
         placeholder="Sök livsmedel..."
+        autoFocus
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
