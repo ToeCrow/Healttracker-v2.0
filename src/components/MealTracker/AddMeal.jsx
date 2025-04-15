@@ -32,7 +32,7 @@ const AddMeal = () => {
         required
         className="block w-full px-4 py-2 pr-10 text-accent bg-white border border-gray-300 rounded shadow focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent appearance-none"
       >
-        <option value="">Välj kategori</option>
+        <option value="" disabled hidden>Välj kategori</option>
         <option value="Frukost">Frukost</option>
         <option value="Lunch">Lunch</option>
         <option value="Middag">Middag</option>
