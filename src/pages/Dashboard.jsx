@@ -6,7 +6,7 @@ import ProfileCard from '../components/dashboard/ProfileCard';
 import MakroCalc from '../components/dashboard/MakroCalc';
 // import MacrosBar from '../components/MacrosBar';
 import MealPlaner from '../components/dashboard/MealPlaner';
-import AddMeal from '@/components/MealTracker/addMeal';
+// import AddMeal from '@/components/MealTracker/addMeal';
 
 const Dashboard = () => {
   return (
@@ -27,7 +27,7 @@ const Dashboard = () => {
         {/* Right Column */}
         <div className="flex flex-col gap-4">
           <MealPlaner />
-          <AddMeal />
+          {/* <AddMeal /> */}
         </div>
 
       </div>
