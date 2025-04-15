@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import MacrosBar from '../dashboard/MacrosBar';
 import { Button } from '@/components/ui/button';
@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 // 🆕 Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addMeal } from "../../Redux/reducers/mealSlice";
 
 
@@ -105,6 +105,18 @@ const AddMeal = () => {
     }));
     
   }, [addedFoods, mealType, displayDate, dispatch]);
+
+
+  // För att hålla koll på meals
+  const meals = useSelector((state) => state.meals.meals);
+  const prevMealsRef = useRef([]);
+
+  useEffect(() => {
+    if (JSON.stringify(prevMealsRef.current) !== JSON.stringify(meals)) {
+      console.log('meals updated:', meals);
+      prevMealsRef.current = meals;
+    }
+  }, [meals]);
 
   return (
     <main id='main-content' className='flex justify-center items-center min-h-screen'>
@@ -223,7 +235,7 @@ const AddMeal = () => {
     </div>
     </div>
     <div className="flex flex-col gap-4">
-          <MealList />
+    <MealList meals={meals} />
         </div>
 
         </div>

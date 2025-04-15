@@ -4,7 +4,7 @@ import { selectTDEE } from '@/Redux/reducers/profileSlice';
 
 const KcalStatus = () => {
   const tdee = useSelector(selectTDEE);
-  const meals = useSelector((state) => state.meals.mealLogs || []);
+  const meals = useSelector((state) => state.meals.meals || []);
 
   const todaysDate = new Date().toISOString().split('T')[0];
 

@@ -2,7 +2,7 @@ import React from 'react';
 import MealListItem from './MealListItem';
 
 const MealList = ({ meals = [], onEdit }) => {
-  // Se till att meals är en array
+  // Ensure meals is an array and sort them by date
   const sortedMeals = [...(meals || [])].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (

@@ -9,6 +9,10 @@ const MealListItem = ({ meal, onEdit = () => {}, editButton = null }) => {
     setShowDetails(!showDetails);
   };
 
+  // Extract total values from the meal data
+  const { date, mealType, total } = meal;
+  const { protein, kolhydrater, fett, kcal } = total;
+
   return (
     <details 
       className="bg-white shadow-md rounded p-4 border-1 border-accent/30"
@@ -19,8 +23,8 @@ const MealListItem = ({ meal, onEdit = () => {}, editButton = null }) => {
         onClick={toggleDetails}
       >
         <div>
-          <h3 className="text-xl font-bold text-accent text-left p-2">{meal.title}</h3>
-          <p className="text-gray-600 p-2">Energi: <span className="text-primary font-bold">{meal.energy}</span> kcal</p>
+          <h3 className="text-xl font-bold text-accent text-left p-2">{mealType}</h3>
+          <p className="text-gray-600 p-2">Energi: <span className="text-primary font-bold">{kcal}</span> kcal</p>
         </div>
         {/* ✅ Arrow starts down and rotates up */}
         <span className="inline-block transition-transform duration-200" style={{ transform: `rotate(${showDetails ? 180 : 0}deg)` }}>
@@ -31,11 +35,11 @@ const MealListItem = ({ meal, onEdit = () => {}, editButton = null }) => {
       </summary>
       {showDetails && (
         <div className="flex flex-col items-start text-left">
-          <p className="bg-secondary w-full p-2">Datum: <span className="text-accent font-light">{meal.date}</span></p>
-          <p className="text-gray-600 p-2">Protein: <span className="text-primary font-bold">{meal.protein}</span> g</p>
-          <p className="bg-secondary w-full p-2">Kolhydrat: <span className="text-primary font-bold">{meal.carbohydrate}</span> g</p>
-          <p className="text-gray-600 p-2">Fett: <span className="text-primary font-bold">{meal.fat}</span> g</p>
-          <p className="bg-secondary w-full p-2">Kategori: <span className="text-accent text-light">{meal.category}</span></p>
+          <p className="bg-secondary w-full p-2">Datum: <span className="text-accent font-light">{date}</span></p>
+          <p className="text-gray-600 p-2">Protein: <span className="text-primary font-bold">{protein}</span> g</p>
+          <p className="bg-secondary w-full p-2">Kolhydrater: <span className="text-primary font-bold">{kolhydrater}</span> g</p>
+          <p className="text-gray-600 p-2">Fett: <span className="text-primary font-bold">{fett}</span> g</p>
+          <p className="bg-secondary w-full p-2">Kategori: <span className="text-accent text-light">{mealType}</span></p>
         </div>
       )}
       {editButton && (
