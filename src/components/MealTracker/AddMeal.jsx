@@ -138,6 +138,7 @@ const AddMeal = () => {
           <input
             type="number"
             placeholder="Ange mängd i gram..."
+            autoFocus
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
             className="w-full p-2 mt-2 border border-gray-300 rounded"
