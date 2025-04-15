@@ -17,9 +17,17 @@ const MealTracker = () => {
         }));
     };
 
+    const today = new Date().toLocaleDateString('sv-SE', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
     return (
         <>
             <div className="max-w-sm mx-auto rounded-lg shadow-md p-6 mt-4 fixed-width space-y-4 card">
+                <h2>{today}</h2>
                 <MealComponent mealName="Frukost" kcal={meals.frukost} onAdd={() => handleAddMeal('frukost')} />
                 <MealComponent mealName="Lunch" kcal={meals.lunch} onAdd={() => handleAddMeal('lunch')} />
                 <MealComponent mealName="Middag" kcal={meals.middag} onAdd={() => handleAddMeal('middag')} />

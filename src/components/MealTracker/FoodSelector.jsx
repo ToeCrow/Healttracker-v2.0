@@ -97,7 +97,7 @@ const FoodSelector = () => {
       {/* Lista över tillagda livsmedel */}
       <div className="mt-5">
         {addedFoods.length > 0 && (
-          <h3 className="text-xl font-semibold">Tillagda livsmedel</h3>
+          <h3 className="text-xl font-semibold">"Måltid och dagens datum"</h3>
         )}
         {addedFoods.map((food, index) => (
           <div key={index} className="mt-2 p-2 border border-gray-300 rounded">

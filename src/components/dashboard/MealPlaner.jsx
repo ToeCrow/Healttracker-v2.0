@@ -1,7 +1,6 @@
 import React from 'react'
 import MacrosBar from './MacrosBar'
 import KcalStatus from './KcalStatus'
-import TodaysMeals from './TodaysMeals'
 import MealTracker from '../MealTracker/MealTracker'
 
 const MealPlaner = () => {
@@ -15,7 +14,6 @@ const MealPlaner = () => {
     </section>
     <section className="mealplan-day">
       <MealTracker />
-      <TodaysMeals />
     </section>
     </main>
   )
