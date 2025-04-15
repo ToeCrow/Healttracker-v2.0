@@ -23,6 +23,7 @@ const AddMeal = () => {
       return Number.isInteger(total) ? total : total.toFixed(1);
     };
     
+    // mock data
     const [foods] = useState([
       { namn: 'Nöt talg', protein: 7, kolhydrater: 0, fett: 71, kcal: 656 },
       { namn: 'Gris späck', protein: 10, kolhydrater: 0, fett: 80, kcal: 700 },
@@ -71,7 +72,7 @@ const AddMeal = () => {
 
   return (
     <main id='main-content' className='flex justify-center items-center min-h-screen'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start p-4 max-w-4xl w-full'></div>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start p-4 max-w-4xl w-full'>
     <div className='flex flex-col gap-4 card'>
       <MacrosBar />
       <h2>{displayDate}</h2>
@@ -91,8 +92,6 @@ const AddMeal = () => {
         <option value="Middag">Middag</option>
         <option value="Mellanmål">Mellanmål</option>
       </select>
-
-      <Button className="w-full rounded py-2 transition ">Lägg till måltid</Button>
 
       <div className="w-80 mx-auto mt-5">
       <input
@@ -131,12 +130,17 @@ const AddMeal = () => {
           />
           
           {/* Lägg till knapp */}
-          <button
+          {/* <button
             onClick={handleAddFood}
             className="mt-3 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
           >
             Lägg till
-          </button>
+          </button> */}
+          <Button 
+          onClick={handleAddFood} 
+          className="w-full rounded py-2 transition ">
+            Lägg till matvara
+            </Button>
         </div>
       )}
 
@@ -172,7 +176,7 @@ const AddMeal = () => {
           <MealList />
         </div>
 
-      
+        </div>
     </main>
   );
 };

@@ -80,7 +80,7 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            to="/mealLog"
+            to="/add-meal"
             className={({ isActive }) => 
               `p-4 rounded-md ${isActive ? 'underline' : 'hover:bg-accent'}`
             }
