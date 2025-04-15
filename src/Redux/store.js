@@ -3,9 +3,8 @@ import profileReducer from "./reducers/profileSlice";
 import mealReducer from "./reducers/mealSlice";
 import { loadMealLogs, saveMealLogs, loadProfile, saveProfile } from "../utils/storage";
 
-// Ladda data från localStorage
 const preloadedState = {
-  meals: { mealLogs: loadMealLogs() },
+  meals: { meals: loadMealLogs() }, // ✅ ändrat till "meals"
   profile: loadProfile(),
 };
 
@@ -17,10 +16,9 @@ const store = configureStore({
   preloadedState,
 });
 
-// Spara till localStorage vid ändringar
 store.subscribe(() => {
   const state = store.getState();
-  saveMealLogs(state.meals.mealLogs);
+  saveMealLogs(state.meals.meals); // ✅ ändrat till state.meals.meals
   saveProfile(state.profile);
 });
 

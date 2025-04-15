@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import MacrosBar from '../dashboard/MacrosBar';
 import { Button } from '@/components/ui/button';
 import MealList from '../MealList';
+import { v4 as uuidv4 } from 'uuid';
+
+
+// 🆕 Redux
+import { useDispatch } from 'react-redux';
+import { addMeal } from "../../Redux/reducers/mealSlice";
+
 
 const AddMeal = () => {
   const location = useLocation();
+  const dispatch = useDispatch(); // 🆕
   const { date, mealType: initialMealType } = location.state || {};
- 
-
 
   const today = new Date().toLocaleDateString('sv-SE', {
     weekday: 'long',
@@ -20,69 +26,85 @@ const AddMeal = () => {
   const displayDate = date || today;
   const [mealType, setMealType] = useState(initialMealType || '');
 
-    const getTotal = (items, key) => {
-      const total = items.reduce((acc, item) => acc + item[key], 0);
-      return Number.isInteger(total) ? total : total.toFixed(1);
-    };
-    
-    // mock data
-    const [foods] = useState([
-      { namn: 'Nöt talg', protein: 7, kolhydrater: 0, fett: 71, kcal: 656 },
-      { namn: 'Gris späck', protein: 10, kolhydrater: 0, fett: 80, kcal: 700 },
-      { namn: 'Kycklingbröst', protein: 31, kolhydrater: 0, fett: 3.6, kcal: 165 },
-      { namn: 'Lax', protein: 20, kolhydrater: 0, fett: 13, kcal: 232 },
-      { namn: 'Ägg', protein: 13, kolhydrater: 1.1, fett: 10, kcal: 155 },
-      { namn: 'Ost (cheddar)', protein: 25, kolhydrater: 1.3, fett: 33, kcal: 402 },
-      { namn: 'Köttfärs (nöt)', protein: 26, kolhydrater: 0, fett: 20, kcal: 250 },
-      { namn: 'Banan', protein: 1.3, kolhydrater: 27, fett: 0.3, kcal: 105 },
-      { namn: 'Potatis', protein: 2, kolhydrater: 17, fett: 0.1, kcal: 77 },
-      { namn: 'Broccoli', protein: 2.8, kolhydrater: 7, fett: 0.4, kcal: 55 }
-    ]);
-  
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedFood, setSelectedFood] = useState(null);
-    const [quantity, setQuantity] = useState('');
-    const [addedFoods, setAddedFoods] = useState([]);
-  
-    const filteredFoods = searchTerm.length > 0
-      ? foods.filter(food =>
-          food.namn.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      : foods;
-  
-    const handleAddFood = () => {
-      if (!selectedFood || !quantity) return;
-  
-      const quantityNumber = parseFloat(quantity);
-      if (isNaN(quantityNumber) || quantityNumber <= 0) return;
-  
-      // Beräkna näringsvärdet per gram och multiplicera med den angivna mängden (gram)
-      const foodWithQuantity = {
-        ...selectedFood,
-        quantity: quantityNumber,
-        totalProtein: (selectedFood.protein / 100) * quantityNumber,
-        totalKolhydrater: (selectedFood.kolhydrater / 100) * quantityNumber,
-        totalFett: (selectedFood.fett / 100) * quantityNumber,
-        totalKcal: (selectedFood.kcal / 100) * quantityNumber
-      };
-  
-      setAddedFoods([...addedFoods, foodWithQuantity]);
-      setSearchTerm('');
-      setSelectedFood(null);
-      setQuantity('');
+  const getTotal = (items, key) => {
+    const total = items.reduce((acc, item) => acc + item[key], 0);
+    return Number.isInteger(total) ? total : total.toFixed(1);
+  };
+
+  const [foods] = useState([
+    { namn: 'Nöt talg', protein: 7, kolhydrater: 0, fett: 71, kcal: 656 },
+    { namn: 'Gris späck', protein: 10, kolhydrater: 0, fett: 80, kcal: 700 },
+    { namn: 'Kycklingbröst', protein: 31, kolhydrater: 0, fett: 3.6, kcal: 165 },
+    { namn: 'Lax', protein: 20, kolhydrater: 0, fett: 13, kcal: 232 },
+    { namn: 'Ägg', protein: 13, kolhydrater: 1.1, fett: 10, kcal: 155 },
+    { namn: 'Ost (cheddar)', protein: 25, kolhydrater: 1.3, fett: 33, kcal: 402 },
+    { namn: 'Köttfärs (nöt)', protein: 26, kolhydrater: 0, fett: 20, kcal: 250 },
+    { namn: 'Banan', protein: 1.3, kolhydrater: 27, fett: 0.3, kcal: 105 },
+    { namn: 'Potatis', protein: 2, kolhydrater: 17, fett: 0.1, kcal: 77 },
+    { namn: 'Broccoli', protein: 2.8, kolhydrater: 7, fett: 0.4, kcal: 55 }
+  ]);
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [quantity, setQuantity] = useState('');
+  const [addedFoods, setAddedFoods] = useState([]);
+
+  const filteredFoods = searchTerm.length > 0
+    ? foods.filter(food =>
+        food.namn.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : foods;
+
+  const handleAddFood = () => {
+    if (!selectedFood || !quantity) return;
+
+    const quantityNumber = parseFloat(quantity);
+    if (isNaN(quantityNumber) || quantityNumber <= 0) return;
+
+    const foodWithQuantity = {
+      ...selectedFood,
+      quantity: quantityNumber,
+      totalProtein: (selectedFood.protein / 100) * quantityNumber,
+      totalKolhydrater: (selectedFood.kolhydrater / 100) * quantityNumber,
+      totalFett: (selectedFood.fett / 100) * quantityNumber,
+      totalKcal: (selectedFood.kcal / 100) * quantityNumber
     };
 
-    const handleRemoveFood = (index) => {
-      const updated = [...addedFoods];
-      updated.splice(index, 1);
-      setAddedFoods(updated); // uppdatera din state
-    };
+    const updated = [...addedFoods, foodWithQuantity];
+    setAddedFoods(updated);
+    setSearchTerm('');
+    setSelectedFood(null);
+    setQuantity('');
+  };
+
+  const handleRemoveFood = (index) => {
+    const updated = [...addedFoods];
+    updated.splice(index, 1);
+    setAddedFoods(updated);
+  };
+
+  const handleSelectFood = (food) => {
+    setSelectedFood(food);
+  };
+
+  // 🆕 Spara till redux varje gång addedFoods ändras
+  useEffect(() => {
+    if (addedFoods.length === 0 || !mealType) return;
+
+    dispatch(addMeal({
+      id: uuidv4(), // 🆕 unikt id
+      date: displayDate,
+      mealType,
+      foods: addedFoods,
+      total: {
+        protein: getTotal(addedFoods, "totalProtein"),
+        kolhydrater: getTotal(addedFoods, "totalKolhydrater"),
+        fett: getTotal(addedFoods, "totalFett"),
+        kcal: getTotal(addedFoods, "totalKcal"),
+      },
+    }));
     
-    const handleSelectFood = (food, index) => {
-      setSelectedFood(food); // sätt den för redigering
-      setSelectedIndex(index); // valfritt, om du vill uppdatera istället för lägga till
-    };
-    
+  }, [addedFoods, mealType, displayDate, dispatch]);
 
   return (
     <main id='main-content' className='flex justify-center items-center min-h-screen'>
