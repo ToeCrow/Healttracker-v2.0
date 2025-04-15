@@ -7,6 +7,8 @@ import MealList from '../MealList';
 const AddMeal = () => {
   const location = useLocation();
   const { date, mealType: initialMealType } = location.state || {};
+ 
+
 
   const today = new Date().toLocaleDateString('sv-SE', {
     weekday: 'long',
@@ -70,6 +72,18 @@ const AddMeal = () => {
       setQuantity('');
     };
 
+    const handleRemoveFood = (index) => {
+      const updated = [...addedFoods];
+      updated.splice(index, 1);
+      setAddedFoods(updated); // uppdatera din state
+    };
+    
+    const handleSelectFood = (food, index) => {
+      setSelectedFood(food); // sätt den för redigering
+      setSelectedIndex(index); // valfritt, om du vill uppdatera istället för lägga till
+    };
+    
+
   return (
     <main id='main-content' className='flex justify-center items-center min-h-screen'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start p-4 max-w-4xl w-full'>
@@ -130,12 +144,7 @@ const AddMeal = () => {
           />
           
           {/* Lägg till knapp */}
-          {/* <button
-            onClick={handleAddFood}
-            className="mt-3 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
-          >
-            Lägg till
-          </button> */}
+          
           <Button 
           onClick={handleAddFood} 
           className="w-full rounded py-2 transition ">
@@ -156,20 +165,37 @@ const AddMeal = () => {
 
       {/* Lista över tillagda livsmedel */}
       <div className="mt-5">
-        {addedFoods.length > 0 && (
-          <h3 className="text-xl font-semibold">Tillagda livsmedel:</h3>
-        )}
-        {addedFoods.map((food, index) => (
-          <div key={index} className="mt-2 p-2 border border-gray-300 rounded">
-            <h4 className="font-semibold">{food.namn} ({food.quantity} g)</h4>
-            <p>Protein: {Number.isInteger(food.totalProtein) ? food.totalProtein : food.totalProtein.toFixed(1)} g</p>
-            <p>Kolhydrater: {Number.isInteger(food.totalKolhydrater) ? food.totalKolhydrater : food.totalKolhydrater.toFixed(1)} g</p>
-            <p>Fett: {Number.isInteger(food.totalFett) ? food.totalFett : food.totalFett.toFixed(1)} g</p>
-            <p>Kcal: {Number.isInteger(food.totalKcal) ? food.totalKcal : food.totalKcal.toFixed(1)} kcal</p>
+  {addedFoods.length > 0 && (
+    <h3 className="text-xl font-semibold">Tillagda livsmedel:</h3>
+  )}
+  {addedFoods.map((food, index) => (
+    <div
+      key={index}
+      onClick={() => handleSelectFood(food, index)} // sätt det som selected
+      className="mt-2 p-2 border border-gray-300 rounded relative hover:bg-gray-50 cursor-pointer"
+    >
+      {/* Kryss-knapp */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation(); // Stoppar click från att även trigga onClick för edit
+          handleRemoveFood(index); // din borttagningsfunktion
+        }}
+        className="absolute top-1 right-2 text-red-500 text-lg font-bold hover:text-red-700"
+        aria-label="Ta bort"
+      >
+        ×
+      </button>
 
-          </div>
-        ))}
-      </div>
+      <h4 className="font-semibold">
+        {food.namn} ({food.quantity} g)
+      </h4>
+      <p>Protein: {Number.isInteger(food.totalProtein) ? food.totalProtein : food.totalProtein.toFixed(1)} g</p>
+      <p>Kolhydrater: {Number.isInteger(food.totalKolhydrater) ? food.totalKolhydrater : food.totalKolhydrater.toFixed(1)} g</p>
+      <p>Fett: {Number.isInteger(food.totalFett) ? food.totalFett : food.totalFett.toFixed(1)} g</p>
+      <p>Kcal: {Number.isInteger(food.totalKcal) ? food.totalKcal : food.totalKcal.toFixed(1)} kcal</p>
+    </div>
+  ))}
+</div>
     </div>
     </div>
     <div className="flex flex-col gap-4">
