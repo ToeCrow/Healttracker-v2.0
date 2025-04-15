@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
 const FoodSelector = () => {
+  const getTotal = (items, key) => {
+    const total = items.reduce((acc, item) => acc + item[key], 0);
+    return Number.isInteger(total) ? total : total.toFixed(1);
+  };
+  
   const [foods] = useState([
     { namn: 'Nöt talg', protein: 7, kolhydrater: 0, fett: 71, kcal: 656 },
     { namn: 'Gris späck', protein: 10, kolhydrater: 0, fett: 80, kcal: 700 },
@@ -94,18 +99,29 @@ const FoodSelector = () => {
         </div>
       )}
 
+      {addedFoods.length > 0 && (
+        <div className="mt-4 p-3 border-t border-gray-300">
+          <h3 className="text-lg font-bold">Totalt:</h3>
+          <p>Protein: {getTotal(addedFoods, "totalProtein")} g</p>
+          <p>Kolhydrater: {getTotal(addedFoods, "totalKolhydrater")} g</p>
+          <p>Fett: {getTotal(addedFoods, "totalFett")} g</p>
+          <p>Kcal: {getTotal(addedFoods, "totalKcal")} kcal</p>
+        </div>
+      )}
+
       {/* Lista över tillagda livsmedel */}
       <div className="mt-5">
         {addedFoods.length > 0 && (
-          <h3 className="text-xl font-semibold">"Måltid och dagens datum"</h3>
+          <h3 className="text-xl font-semibold">Tillagda livsmedel:</h3>
         )}
         {addedFoods.map((food, index) => (
           <div key={index} className="mt-2 p-2 border border-gray-300 rounded">
             <h4 className="font-semibold">{food.namn} ({food.quantity} g)</h4>
-            <p>Protein: {food.totalProtein} g</p>
-            <p>Kolhydrater: {food.totalKolhydrater} g</p>
-            <p>Fett: {food.totalFett} g</p>
-            <p>Kcal: {food.totalKcal} kcal</p>
+            <p>Protein: {Number.isInteger(food.totalProtein) ? food.totalProtein : food.totalProtein.toFixed(1)} g</p>
+            <p>Kolhydrater: {Number.isInteger(food.totalKolhydrater) ? food.totalKolhydrater : food.totalKolhydrater.toFixed(1)} g</p>
+            <p>Fett: {Number.isInteger(food.totalFett) ? food.totalFett : food.totalFett.toFixed(1)} g</p>
+            <p>Kcal: {Number.isInteger(food.totalKcal) ? food.totalKcal : food.totalKcal.toFixed(1)} kcal</p>
+
           </div>
         ))}
       </div>

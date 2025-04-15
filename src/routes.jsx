@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import App from "./App";
 import Dashboard from "./pages/Dashboard";
 import MealTracker from "./components/MealTracker/MealTracker";
+import AddMeal from "./components/MealTracker/addMeal";
 
 // Ladda komponenter asynkront
 const MealLog = lazy(() => import("./pages/MealLog"));
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
             <MealLog />
         ),
       },
+        
       {
         path: "profileform",
         element: (
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
             <MealTracker />
           </Suspense>
         ),
+      },
+      {
+        path: "add-meal",
+        element: <AddMeal />, 
       },
     ],
   },
