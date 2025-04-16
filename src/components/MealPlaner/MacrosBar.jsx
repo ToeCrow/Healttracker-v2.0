@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import { useSelector } from 'react-redux';
 
 const MacrosBar = () => {
@@ -6,12 +6,7 @@ const MacrosBar = () => {
 
   const allMeals = useSelector((state) => state.meals.meals);
 
-  const today = new Date().toLocaleDateString('sv-SE', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const today = useSelector((state) => state.meals.currentDate);
 
   const todaysMeals = allMeals.filter(meal => meal.date === today);
 

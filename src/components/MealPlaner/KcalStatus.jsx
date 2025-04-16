@@ -7,13 +7,6 @@ const KcalStatus = () => {
   const meals = useSelector((state) => state.meals.meals || []);
   const currentDate = useSelector((state) => state.meals.currentDate);
 
-  // const todaysDate = new Date().toLocaleDateString('sv-SE', {
-  //   weekday: 'long',
-  //   year: 'numeric',
-  //   month: 'long',
-  //   day: 'numeric',
-  // });
-
   // Filtrera måltider för idag
   const todaysMeals = meals.filter((meal) => meal.date === currentDate);
 

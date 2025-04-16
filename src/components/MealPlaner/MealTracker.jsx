@@ -4,20 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { SquareArrowRight, SquareArrowLeft } from 'lucide-react';
 import { prevDay, nextDay } from "../../Redux/reducers/mealSlice";
-import { formatDateSV } from "../../utils/date";
+
 
 const MealTracker = () => {
     const navigate = useNavigate();
     const allMeals = useSelector((state) => state.meals.meals);
     const currentDate = useSelector((state) => state.meals.currentDate);
     const dispatch = useDispatch();
-
-    const formattedDate = new Date(currentDate).toLocaleDateString('sv-SE', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
 
     const todaysMeals = allMeals.filter(meal => meal.date === currentDate);
 
@@ -51,7 +44,7 @@ const MealTracker = () => {
             <div className='flex items-center justify-center gap-4'>
                 {/* to the left, for previous day */}
                 <SquareArrowLeft onClick={handlePrev} className="cursor-pointer" />
-                <h2>{formatDateSV(currentDate)}</h2>
+                <h2>{currentDate}</h2>
                 {/* to the right, for next day */}
                 <SquareArrowRight onClick={handleNext} className="cursor-pointer" />
             </div>
