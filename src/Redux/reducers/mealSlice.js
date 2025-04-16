@@ -8,6 +8,7 @@ const mealSlice = createSlice({
   initialState: {
     meals: [],
     currentDate: getTodayISO(),
+  },
   reducers: {
     setDate: (state, action) => {
       state.currentDate = action.payload;
@@ -94,6 +95,7 @@ const mealSlice = createSlice({
     }
   },
 });
+
 
 export const { setDate, nextDay, prevDay, addMeal, removeFood, updateMeal, getMealsByDate } = mealSlice.actions;
 export default mealSlice.reducer;
