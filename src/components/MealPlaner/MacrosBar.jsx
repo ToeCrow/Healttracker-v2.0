@@ -44,7 +44,7 @@ const MacrosBar = () => {
   );
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md">
+    <div className="p-4 card rounded-lg shadow-md fixed-width">
       <h3 className="text-md font-semibold mb-4">Dagens makronutrienter</h3>
       <MacroRow
         label="Protein"
