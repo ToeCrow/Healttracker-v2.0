@@ -21,21 +21,22 @@ const EnergyPieChart = ({ energyData }) => {
     const data = {
         labels: ['Kolhydrater', 'Fett', 'Protein'],
         datasets: [
-            {
-                data: energyData,
-                backgroundColor: [
-                    primaryColor,
-                    secondaryColor,
-                    accentColor,
-                ],
-                hoverBackgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                ],
-            },
+          {
+            data: energyData,
+            backgroundColor: [
+              '#3b82f6', // Kolhydrater - blå
+              '#facc15', // Fett - gul
+              '#22c55e', // Protein - grön
+            ],
+            hoverBackgroundColor: [
+              '#2563eb', // mörkare blå
+              '#eab308', // mörkare gul
+              '#16a34a', // mörkare grön
+            ],
+          },
         ],
-    };
+      };
+      
 
     const options = {
         responsive: true,
