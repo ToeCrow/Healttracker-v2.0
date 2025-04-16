@@ -1,7 +1,7 @@
 import React from 'react'
-import MacrosBar from './MacrosBar'
-import KcalStatus from './KcalStatus'
-import MealTracker from '../MealTracker/MealTracker'
+import MacrosBar from '../MealPlaner/MacrosBar'
+import KcalStatus from '../MealPlaner/KcalStatus'
+import MealTracker from '../MealPlaner/MealTracker'
 
 const MealPlaner = () => {
   return (

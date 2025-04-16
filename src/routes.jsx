@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 import App from "./App";
 import Dashboard from "./pages/Dashboard";
-import MealTracker from "./components/MealTracker/MealTracker";
-import AddMeal from "./components/MealTracker/addMeal";
+import MealTracker from "./components/MealPlaner/MealTracker";
+import AddMeal from "./components/MealPlaner/addMeal";
 
 // Ladda komponenter asynkront
 const MealLog = lazy(() => import("./pages/MealLog"));
