@@ -1,21 +1,28 @@
 import React from 'react';
 import MealComponent from './MealComponent';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { SquareArrowRight, SquareArrowLeft } from 'lucide-react';
+import { prevDay, nextDay } from "../../Redux/reducers/mealSlice";
+import { formatDateSV } from "../../utils/date";
 
 const MealTracker = () => {
     const navigate = useNavigate();
     const allMeals = useSelector((state) => state.meals.meals);
+    const currentDate = useSelector((state) => state.meals.currentDate);
+    const dispatch = useDispatch();
 
-    const today = new Date().toLocaleDateString('sv-SE', {
+    const formattedDate = new Date(currentDate).toLocaleDateString('sv-SE', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-    });
+      });
 
-    const todaysMeals = allMeals.filter(meal => meal.date === today);
+    const todaysMeals = allMeals.filter(meal => meal.date === currentDate);
+
+    const handlePrev = () => dispatch(prevDay());
+    const handleNext = () => dispatch(nextDay());
 
     const mealSums = {
         Frukost: 0,
@@ -33,7 +40,7 @@ const MealTracker = () => {
     const handleAddMeal = (mealType) => {
         navigate('/add-meal', {
             state: {
-                date: today,
+                date: currentDate,
                 mealType: mealType,
             },
         });
@@ -42,9 +49,11 @@ const MealTracker = () => {
     return (
         <div className="max-w-sm mx-auto rounded-lg shadow-md p-6 mt-4 fixed-width space-y-4 card">
             <div className='flex items-center justify-center gap-4'>
-            <SquareArrowLeft/>
-                <h2>{today}</h2>
-            <SquareArrowRight/>
+                {/* to the left, for previous day */}
+                <SquareArrowLeft onClick={handlePrev} className="cursor-pointer" />
+                <h2>{formatDateSV(currentDate)}</h2>
+                {/* to the right, for next day */}
+                <SquareArrowRight onClick={handleNext} className="cursor-pointer" />
             </div>
             <MealComponent mealName="Frukost" mealSums={mealSums} onAdd={() => handleAddMeal('Frukost')} />
             <MealComponent mealName="Lunch" mealSums={mealSums} onAdd={() => handleAddMeal('Lunch')} />

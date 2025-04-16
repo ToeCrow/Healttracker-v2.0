@@ -10,7 +10,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addMeal, removeFood } from "../../Redux/reducers/mealSlice";
 
 const AddMeal = () => {
+
+  const currentDate = useSelector((state) => state.meals.currentDate);
   const location = useLocation();
+  const displayDate = location.state?.date || currentDate;
   const dispatch = useDispatch(); // 🆕
   const { date, mealType: initialMealType } = location.state || {};
 
@@ -21,7 +24,7 @@ const AddMeal = () => {
     day: 'numeric',
   });
 
-  const displayDate = date || today;
+  // const displayDate = date || today;
   const [mealType, setMealType] = useState(initialMealType || '');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFood, setSelectedFood] = useState(null);

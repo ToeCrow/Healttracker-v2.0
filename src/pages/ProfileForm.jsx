@@ -8,12 +8,11 @@ import {
   setAge,
   setActivityLevel,
   setGoal,
-  setTDEE,
+  calculateTDEE,
   setBirthDate,
   addWeight,
 } from "../Redux/reducers/profileSlice";
 import { useNavigate } from "react-router-dom";
-import { calculateTDEE } from "../Redux/reducers/profileSlice";
 
 const ProfileForm = () => {
 
@@ -43,37 +42,7 @@ const ProfileForm = () => {
     }
   }, [goal, weight, activityLevel, dispatch]);
 
-  // const calculateTDEE = () => {
-  //   const currentWeight = parseFloat(latestWeight);
-  //   const numericHeight = parseFloat(height);
-  //   const numericAge = parseInt(age, 10);
-  //   const numericActivityLevel = parseFloat(activityLevel);
-  //   const numericGoal = parseFloat(goal);
-
-  //   if (
-  //     isNaN(currentWeight) ||
-  //     !gender ||
-  //     isNaN(numericHeight) ||
-  //     isNaN(numericActivityLevel) ||
-  //     isNaN(numericGoal) ||
-  //     isNaN(numericAge)
-  //   ) {
-  //     return;
-  //   }
-
-  //   let bmr;
-  //   if (gender === "male") {
-  //     bmr =
-  //       88.36 + 13.4 * currentWeight + 4.8 * numericHeight - 5.7 * numericAge;
-  //   } else if (gender === "female") {
-  //     bmr =
-  //       447.6 + 9.2 * currentWeight + 3.1 * numericHeight - 4.3 * numericAge;
-  //   }
-
-  //   const totalEnergyExpenditure = bmr * numericActivityLevel + numericGoal;
-  //   dispatch(setTDEE(totalEnergyExpenditure));
-  // };
-
+ 
   const handleWeightChange = (e) => {
     setWeightInput(e.target.value);
   };

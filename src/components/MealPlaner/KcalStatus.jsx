@@ -5,16 +5,17 @@ import { selectTDEE } from '@/Redux/reducers/profileSlice';
 const KcalStatus = () => {
   const tdee = useSelector(selectTDEE);
   const meals = useSelector((state) => state.meals.meals || []);
+  const currentDate = useSelector((state) => state.meals.currentDate);
 
-  const todaysDate = new Date().toLocaleDateString('sv-SE', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  // const todaysDate = new Date().toLocaleDateString('sv-SE', {
+  //   weekday: 'long',
+  //   year: 'numeric',
+  //   month: 'long',
+  //   day: 'numeric',
+  // });
 
   // Filtrera måltider för idag
-  const todaysMeals = meals.filter((meal) => meal.date === todaysDate);
+  const todaysMeals = meals.filter((meal) => meal.date === currentDate);
 
   // Räkna ut kalorier som konsumerats idag
   const consumedCalories = todaysMeals.reduce(

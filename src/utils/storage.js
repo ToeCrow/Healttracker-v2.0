@@ -11,15 +11,22 @@ const defaultProfile = {
   fatLevel: 0.2,
 };
 
+const defaultMealLogs = []; // Viktigt! Alltid array
+
+// ✅ Generisk loader
 const loadFromLocalStorage = (key, defaultValue) => {
   try {
-    return JSON.parse(localStorage.getItem(key)) || defaultValue;
+    const data = JSON.parse(localStorage.getItem(key));
+    return Array.isArray(defaultValue) && !Array.isArray(data)
+      ? defaultValue
+      : data ?? defaultValue;
   } catch (err) {
     console.error(`Error loading ${key}:`, err);
     return defaultValue;
   }
 };
 
+// ✅ Generisk saver
 const saveToLocalStorage = (key, value) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
@@ -28,20 +35,8 @@ const saveToLocalStorage = (key, value) => {
   }
 };
 
-export const loadState = () => {
-  const mealLogs = loadFromLocalStorage("mealLogs", []);
-  const profile = loadFromLocalStorage("profile", defaultProfile);
-
-  return { meals: { mealLogs }, profile };
-};
-
-export const saveState = (state) => {
-  saveToLocalStorage("mealLogs", state.meals?.mealLogs || []);
-  saveToLocalStorage("profile", state.profile);
-};
-
-// Specifika funktioner som använder centraliserade metoder
-export const loadMealLogs = () => loadFromLocalStorage("mealLogs", []);
+export const loadMealLogs = () => loadFromLocalStorage("mealLogs", defaultMealLogs);
 export const saveMealLogs = (mealLogs) => saveToLocalStorage("mealLogs", mealLogs);
+
 export const loadProfile = () => loadFromLocalStorage("profile", defaultProfile);
 export const saveProfile = (profile) => saveToLocalStorage("profile", profile);

@@ -1,11 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getTodayISO, formatDateSV, addDays } from "../../utils/date";
+
+
 
 const mealSlice = createSlice({
   name: "meals",
   initialState: {
     meals: [],
-  },
+    currentDate: getTodayISO(),
   reducers: {
+    setDate: (state, action) => {
+      state.currentDate = action.payload;
+    },
+
+    nextDay: (state) => {
+      state.currentDate = addDays(state.currentDate, 1);
+    },
+    prevDay: (state) => {
+      state.currentDate = addDays(state.currentDate, -1);
+    },
+    
     addMeal: (state, action) => {
       const { date, mealType, foods, total } = action.payload;
     
@@ -81,5 +95,5 @@ const mealSlice = createSlice({
   },
 });
 
-export const { addMeal, updateMeal, removeFood, getMealsByDate } = mealSlice.actions;
+export const { setDate, nextDay, prevDay, addMeal, removeFood, updateMeal, getMealsByDate } = mealSlice.actions;
 export default mealSlice.reducer;

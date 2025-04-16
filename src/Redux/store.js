@@ -4,9 +4,18 @@ import mealReducer from "./reducers/mealSlice";
 import { loadMealLogs, saveMealLogs, loadProfile, saveProfile } from "../utils/storage";
 
 const preloadedState = {
-  meals: { meals: loadMealLogs() }, // ✅ ändrat till "meals"
+  meals: {
+    meals: loadMealLogs(),
+    currentDate: new Date().toLocaleDateString('sv-SE', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }),
+  },
   profile: loadProfile(),
 };
+
 
 const store = configureStore({
   reducer: {
